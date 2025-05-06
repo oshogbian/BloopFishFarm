@@ -1,0 +1,62 @@
+/* _content/BloopFishFarm.Web/Views/Shared/_Layout.cshtml.rz.scp.css */
+/* Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+header[b-w47mtb487x] {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999; /* Ensures it stays on top of other elements */
+  background-color: #003366; /* You can adjust this to match your theme */
+  box-shadow: 0 4px 2px -2px gray; /* Optional: adds shadow for better visibility */
+}
+
+body[b-w47mtb487x] {
+  padding-top: 70px; /* Adds space to prevent content from being hidden under the fixed header */
+}
+
+a.navbar-brand[b-w47mtb487x] {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+a[b-w47mtb487x] {
+  color: #0077cc;
+}
+
+.btn-primary[b-w47mtb487x] {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active[b-w47mtb487x], .nav-pills .show > .nav-link[b-w47mtb487x] {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.border-top[b-w47mtb487x] {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom[b-w47mtb487x] {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow[b-w47mtb487x] {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy[b-w47mtb487x] {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+.footer[b-w47mtb487x] {
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 60px;
+}

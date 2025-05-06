@@ -1,0 +1,147 @@
+@model BloopFishFarm.Core.Models.OrderViewModel
+@{
+    ViewData["Title"] = "Complete Your Order";
+}
+
+<h1>Complete Your Order</h1>
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="card mb-4">
+            <div class="card-header">
+                <h3>Your Information</h3>
+            </div>
+            <div class="card-body">
+                <form asp-action="Create" method="post" id="order-form">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    
+                    <div class="form-group">
+                        <label asp-for="CustomerName" class="control-label">Full Name</label>
+                        <input asp-for="CustomerName" class="form-control" required />
+                        <span asp-validation-for="CustomerName" class="text-danger"></span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label asp-for="CustomerPhone" class="control-label">Phone Number</label>
+                        <input asp-for="CustomerPhone" class="form-control" required />
+                        <span asp-validation-for="CustomerPhone" class="text-danger"></span>
+                        <small class="form-text text-muted">We'll send your order confirmation to this WhatsApp number</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label asp-for="CustomerEmail" class="control-label">Email</label>
+                        <input asp-for="CustomerEmail" class="form-control" required />
+                        <span asp-validation-for="CustomerEmail" class="text-danger"></span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="custom-control custom-checkbox">
+                            <input asp-for="IsPickup" class="custom-control-input" id="isPickup" />
+                            <label class="custom-control-label" for="isPickup">I'll pick up my order at the farm</label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group" id="delivery-address-section">
+                        <label asp-for="DeliveryAddress" class="control-label">Delivery Address</label>
+                        <textarea asp-for="DeliveryAddress" class="form-control" rows="3"></textarea>
+                        <span asp-validation-for="DeliveryAddress" class="text-danger"></span>
+                    </div>
+                    
+                    <!-- Hidden field for cart items that will be populated via JavaScript -->
+                    <div id="cart-items-container">
+                    </div>
+                    
+                    <div class="form-group mt-4">
+                        <button type="submit" class="btn btn-success btn-lg">Place Order</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header">
+                <h3>Order Summary</h3>
+            </div>
+            <div class="card-body" id="order-summary">
+                <!-- This will be populated via JavaScript from the cart -->
+            </div>
+            <div class="card-footer">
+                <div class="d-flex justify-content-between align-items-center">
+                    <span>Total:</span>
+                    <strong id="order-total">$0.00</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            // Load cart items from local storage
+            loadCartItems();
+            
+            // Handle pickup checkbox change
+            $('#isPickup').change(function() {
+                if ($(this).is(':checked')) {
+                    $('#delivery-address-section').hide();
+                    $('#DeliveryAddress').prop('required', false);
+                } else {
+                    $('#delivery-address-section').show();
+                    $('#DeliveryAddress').prop('required', true);
+                }
+            });
+            
+            // Initialize pickup checkbox state
+            $('#isPickup').trigger('change');
+            
+            // Load cart items into the order form
+            function loadCartItems() {
+                var cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+                if (cartItems.length === 0) {
+                    $('#order-summary').html('<p class="text-muted">Your cart is empty.</p>');
+                    $('#order-total').text('$0.00');
+                    return;
+                }
+                
+                var orderSummaryHtml = '';
+                var cartItemsInputs = '';
+                var total = 0;
+                
+                $.each(cartItems, function(index, item) {
+                    var itemTotal = item.weight * item.pricePerKg;
+                    total += itemTotal;
+                    
+                    // Add item to summary
+                    orderSummaryHtml += `
+                        <div class="mb-3">
+                            <div><strong>${item.fishName} (${item.fishType})</strong></div>
+                            <div>${item.weight} kg x $${item.pricePerKg}/kg = $${itemTotal.toFixed(2)}</div>
+                        </div>
+                    `;
+                    
+                    // Create hidden inputs for form submission
+                    cartItemsInputs += `
+                        <input type="hidden" name="Items[${index}].FishId" value="${item.fishId}" />
+                        <input type="hidden" name="Items[${index}].FishName" value="${item.fishName}" />
+                        <input type="hidden" name="Items[${index}].FishType" value="${item.fishType}" />
+                        <input type="hidden" name="Items[${index}].Weight" value="${item.weight}" />
+                        <input type="hidden" name="Items[${index}].PricePerKg" value="${item.pricePerKg}" />
+                    `;
+                });
+                
+                $('#order-summary').html(orderSummaryHtml);
+                $('#cart-items-container').html(cartItemsInputs);
+                $('#order-total').text('$' + total.toFixed(2));
+            }
+            
+            // Handle form submission
+            $('#order-form').submit(function() {
+                // Clear cart after successful submission
+                localStorage.removeItem('cart');
+            });
+        });
+    </script>
+}

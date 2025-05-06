@@ -1,0 +1,11 @@
+/Users/emmanuelbalogun/Public/BloopFishFarm/BloopFishFarm.Core/bin/Release/net9.0/BloopFishFarm.Core.deps.json
+/Users/emmanuelbalogun/Public/BloopFishFarm/BloopFishFarm.Core/bin/Release/net9.0/BloopFishFarm.Core.dll
+/Users/emmanuelbalogun/Public/BloopFishFarm/BloopFishFarm.Core/bin/Release/net9.0/BloopFishFarm.Core.pdb
+/Users/emmanuelbalogun/Public/BloopFishFarm/BloopFishFarm.Core/obj/Release/net9.0/BloopFishFarm.Core.GeneratedMSBuildEditorConfig.editorconfig
+/Users/emmanuelbalogun/Public/BloopFishFarm/BloopFishFarm.Core/obj/Release/net9.0/BloopFishFarm.Core.AssemblyInfoInputs.cache
+/Users/emmanuelbalogun/Public/BloopFishFarm/BloopFishFarm.Core/obj/Release/net9.0/BloopFishFarm.Core.AssemblyInfo.cs
+/Users/emmanuelbalogun/Public/BloopFishFarm/BloopFishFarm.Core/obj/Release/net9.0/BloopFishFarm.Core.csproj.CoreCompileInputs.cache
+/Users/emmanuelbalogun/Public/BloopFishFarm/BloopFishFarm.Core/obj/Release/net9.0/BloopFishFarm.Core.dll
+/Users/emmanuelbalogun/Public/BloopFishFarm/BloopFishFarm.Core/obj/Release/net9.0/refint/BloopFishFarm.Core.dll
+/Users/emmanuelbalogun/Public/BloopFishFarm/BloopFishFarm.Core/obj/Release/net9.0/BloopFishFarm.Core.pdb
+/Users/emmanuelbalogun/Public/BloopFishFarm/BloopFishFarm.Core/obj/Release/net9.0/ref/BloopFishFarm.Core.dll

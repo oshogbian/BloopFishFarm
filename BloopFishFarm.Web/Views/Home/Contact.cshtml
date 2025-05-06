@@ -1,0 +1,199 @@
+@{
+    ViewData["Title"] = "Contact & Reviews - Bloop Fish Farm";
+}
+
+<div class="container my-5">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <h1 class="display-4 fw-bold text-primary-green mb-4">Contact & Reviews</h1>
+            
+            <div class="row mb-5">
+                <div class="col-md-6 mb-4 mb-md-0">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <h2 class="h4 mb-4 text-primary-green">
+                                <i class="fas fa-map-marker-alt me-2"></i>Our Location
+                            </h2>
+                            <p class="mb-1">Bloop Fish Farm</p>
+                            <p class="mb-1">Alajaloge Village Off Osogbo / Ilesa Road, Osun State</p>
+                            <p class="mb-1">Osun State, Nigeria</p>
+                            
+                            <h2 class="h4 mb-3 mt-4 text-primary-green">
+                                <i class="fas fa-clock me-2"></i>Business Hours
+                            </h2>
+                            <p class="mb-1">Monday - Friday: 8am - 6pm</p>
+                            <p class="mb-1">Saturday: 9am - 4pm</p>
+                            <p>Sunday: Closed</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <h2 class="h4 mb-4 text-primary-green">
+                                <i class="fas fa-phone-alt me-2"></i>Get In Touch
+                            </h2>
+                            <p class="mb-3">
+                                <strong>Phone:</strong> 
+                                <a href="tel:+2349032112941" class="text-decoration-none">+234 (090) 3211-2941</a>
+                            </p>
+                            <p class="mb-3">
+                                <strong>WhatsApp:</strong> 
+                                <a href="https://wa.me/+2349032112941" target="_blank" class="text-decoration-none" rel="noopener noreferrer">
+                                    +234 (090) 3211-2941 <i class="fab fa-whatsapp text-success"></i>
+                                </a>
+                            </p>
+                            <p>
+                                <strong>Email:</strong> 
+                                <a href="mailto:bloopfishfarm@gmail.com" class="text-decoration-none">bloopfishfarm@gmail.com</a>
+                            </p>
+                            
+                            <div class="mt-4">
+                                <h3 class="h5 mb-3 text-primary-green">Follow Us</h3>
+                                <div class="d-flex gap-3">
+                                    
+                                    <a href="https://www.instagram.com/bloopfishfarm/" 
+                                       class="text-decoration-none fs-4" 
+                                       target="_blank" 
+                                       rel="noopener noreferrer" 
+                                       aria-label="Visit Bloop Fish Farm on Instagram">
+                                        <i class="fab fa-instagram text-danger"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Customer Reviews Section -->
+            <div class="card shadow-sm mb-5">
+                <div class="card-body">
+                    <h2 class="h3 mb-4 text-primary-green">
+                        <i class="fas fa-star me-2"></i>Customer Reviews
+                    </h2>
+                </div>
+            </div>
+
+            <!-- Submit Review Form -->
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h2 class="h3 mb-4 text-primary-green">
+                        <i class="fas fa-comment-alt me-2"></i>Share Your Experience
+                    </h2>
+                    
+                    <form id="reviewForm">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Your Name</label>
+                            <input type="text" class="form-control" id="name" required>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email Address</label>
+                            <input type="email" class="form-control" id="email" required>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label d-block">Your Rating</label>
+                            <div class="rating-stars fs-4">
+                                <i class="far fa-star" data-rating="1"></i>
+                                <i class="far fa-star" data-rating="2"></i>
+                                <i class="far fa-star" data-rating="3"></i>
+                                <i class="far fa-star" data-rating="4"></i>
+                                <i class="far fa-star" data-rating="5"></i>
+                                <input type="hidden" id="rating" value="0" required>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="productPurchased" class="form-label">Product Purchased</label>
+                            <select class="form-select" id="productPurchased" required>
+                                <option value="" selected disabled>Select a product</option>
+                                <option value="Fresh Catfish">Fresh Catfish</option>
+                                <option value="Smoked Catfish">Smoked Catfish</option>
+                                <option value="Catfish Fingerlings">Catfish Fingerlings</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="review" class="form-label">Your Review</label>
+                            <textarea class="form-control" id="review" rows="5" required></textarea>
+                        </div>
+                        
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="consent" required>
+                            <label class="form-check-label" for="consent">I consent to having my review displayed on the Bloop Fish Farm website</label>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary-green">
+                            <i class="fas fa-paper-plane me-2"></i>Submit Review
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            // Star rating functionality
+            $('.rating-stars i').hover(function () {
+                const currentStar = parseInt($(this).data('rating'));
+
+                $('.rating-stars i').each(function () {
+                    const rating = parseInt($(this).data('rating'));
+                    $(this).toggleClass('fas', rating <= currentStar).toggleClass('far', rating > currentStar);
+                });
+            }, function () {
+                const selectedRating = parseInt($('#rating').val());
+
+                $('.rating-stars i').each(function () {
+                    const rating = parseInt($(this).data('rating'));
+                    $(this).toggleClass('fas', rating <= selectedRating).toggleClass('far', rating > selectedRating);
+                });
+            });
+
+            $('.rating-stars i').click(function () {
+                const selectedRating = parseInt($(this).data('rating'));
+                $('#rating').val(selectedRating);
+
+                $('.rating-stars i').each(function () {
+                    const rating = parseInt($(this).data('rating'));
+                    $(this).toggleClass('fas', rating <= selectedRating).toggleClass('far', rating > selectedRating);
+                });
+            });
+
+            $('#reviewForm').submit(function (e) {
+                e.preventDefault();
+
+                if ($('#rating').val() == "0") {
+                    showNotification('Please select a rating before submitting.', 'warning');
+                    return;
+                }
+
+                const name = $('#name').val();
+                showNotification(`Thank you ${name}! Your review has been submitted and will appear after moderation.`, 'success');
+
+                this.reset();
+                $('.rating-stars i').removeClass('fas').addClass('far');
+                $('#rating').val(0);
+            });
+
+            function showNotification(message, type) {
+                const alertClass = 'alert-' + (type || 'info');
+                const notification = $(`
+                    <div class="alert ${alertClass} alert-dismissible fade show" role="alert">
+                        ${message}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                `);
+                $('#reviewForm').before(notification);
+                setTimeout(() => notification.alert('close'), 5000);
+            }
+        });
+    </script>
+}

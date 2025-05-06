@@ -1,0 +1,3 @@
+/Users/emmanuelbalogun/Public/BloopFishFarm/BloopFishFarm.Core/bin/Release/net9.0/publish/BloopFishFarm.Core.dll
+/Users/emmanuelbalogun/Public/BloopFishFarm/BloopFishFarm.Core/bin/Release/net9.0/publish/BloopFishFarm.Core.deps.json
+/Users/emmanuelbalogun/Public/BloopFishFarm/BloopFishFarm.Core/bin/Release/net9.0/publish/BloopFishFarm.Core.pdb

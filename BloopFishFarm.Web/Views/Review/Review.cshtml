@@ -1,0 +1,289 @@
+// BloopFishFarm.Web/Views/Review/Contact.cshtml
+@model BloopFishFarm.Core.Models.Review
+@{
+    ViewData["Title"] = "Contact & Reviews - Bloop Fish Farm";
+}
+
+<div class="container my-5">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <h1 class="display-4 fw-bold text-primary-green mb-4">Contact & Reviews</h1>
+            
+            <div class="row mb-5">
+                <div class="col-md-6 mb-4 mb-md-0">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <h2 class="h4 mb-4 text-primary-green">
+                                <i class="fas fa-map-marker-alt me-2"></i>Our Location
+                            </h2>
+                            <p class="mb-1">Bloop Fish Farm</p>
+                            <p class="mb-1">Alajaloge Village Off Osogbo / Ilesa Road, Osun State</p>
+                            <p class="mb-1">Osun State, Nigeria</p>
+                            
+                            <h2 class="h4 mb-3 mt-4 text-primary-green">
+                                <i class="fas fa-clock me-2"></i>Business Hours
+                            </h2>
+                            <p class="mb-1">Monday - Friday: 8am - 6pm</p>
+                            <p class="mb-1">Saturday: 9am - 4pm</p>
+                            <p>Sunday: Closed</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <h2 class="h4 mb-4 text-primary-green">
+                                <i class="fas fa-phone-alt me-2"></i>Get In Touch
+                            </h2>
+                            <p class="mb-3">
+                                <strong>Phone:</strong> 
+                                <a href="tel:7045348737" class="text-decoration-none">+1 (704) 534 8737</a>
+                            </p>
+                            <p class="mb-3">
+                                <strong>WhatsApp:</strong> 
+                                <a href="https://wa.me/7045348737" target="_blank" class="text-decoration-none">
+                                    +1 (704) 534 8737 <i class="fab fa-whatsapp text-success"></i>
+                                </a>
+                            </p>
+                            <p>
+                                <strong>Email:</strong> 
+                                <a href="mailto:bloopfishfarm@gmail.com" class="text-decoration-none">bloopfishfarm@gmail.com</a>
+                            </p>
+                            
+                            <div class="mt-4">
+                                <h3 class="h5 mb-3 text-primary-green">Follow Us</h3>
+                                <div class="d-flex gap-3">
+                                    <a href="#" class="text-decoration-none fs-4" aria-label="Facebook">
+                                        <i class="fab fa-facebook text-primary"></i>
+                                    </a>
+                                    <a href="#" class="text-decoration-none fs-4" aria-label="Instagram">
+                                        <i class="fab fa-instagram text-danger"></i>
+                                    </a>
+                                    <a href="#" class="text-decoration-none fs-4" aria-label="Twitter">
+                                        <i class="fab fa-twitter text-info"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Customer Reviews Section -->
+            <div class="card shadow-sm mb-5">
+                <div class="card-body">
+                    <h2 class="h3 mb-4 text-primary-green">
+                        <i class="fas fa-star me-2"></i>Customer Reviews
+                    </h2>
+                    
+                    @if (ViewBag.Reviews != null && ViewBag.Reviews.Any())
+                    {
+                        foreach (var review in ViewBag.Reviews)
+                        {
+                            <div class="mb-4">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="bg-light rounded-circle p-2 me-3">
+                                        <i class="fas fa-user text-primary-green fs-4"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="h5 mb-0">@review.Name</h4>
+                                        <div class="text-warning">
+                                            @for (int i = 1; i <= 5; i++)
+                                            {
+                                                if (i <= review.Rating)
+                                                {
+                                                    <i class="fas fa-star"></i>
+                                                }
+                                                else if (i - 0.5 == review.Rating)
+                                                {
+                                                    <i class="fas fa-star-half-alt"></i>
+                                                }
+                                                else
+                                                {
+                                                    <i class="far fa-star"></i>
+                                                }
+                                            }
+                                        </div>
+                                        <small class="text-muted">@review.ProductPurchased</small>
+                                    </div>
+                                </div>
+                                <p class="mb-0">@review.ReviewText</p>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <div class="alert alert-info">
+                            <i class="fas fa-info-circle me-2"></i>Be the first to review our products!
+                        </div>
+                    }
+                </div>
+            </div>
+            
+            <!-- Submit Review Form -->
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h2 class="h3 mb-4 text-primary-green">
+                        <i class="fas fa-comment-alt me-2"></i>Share Your Experience
+                    </h2>
+                    
+                    <div id="notification-area"></div>
+                    
+                    <form id="reviewForm" asp-controller="Review" asp-action="SubmitReview" method="post">
+                        @Html.AntiForgeryToken()
+                        
+                        <div class="mb-3">
+                            <label asp-for="Name" class="form-label">Your Name</label>
+                            <input asp-for="Name" class="form-control" required>
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label asp-for="Email" class="form-label">Email Address</label>
+                            <input asp-for="Email" type="email" class="form-control" required>
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label d-block">Your Rating</label>
+                            <div class="rating-stars fs-4">
+                                <i class="far fa-star" data-rating="1"></i>
+                                <i class="far fa-star" data-rating="2"></i>
+                                <i class="far fa-star" data-rating="3"></i>
+                                <i class="far fa-star" data-rating="4"></i>
+                                <i class="far fa-star" data-rating="5"></i>
+                                <input asp-for="Rating" type="hidden" value="0" required>
+                                <span asp-validation-for="Rating" class="text-danger"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label asp-for="ProductPurchased" class="form-label">Product Purchased</label>
+                            <select asp-for="ProductPurchased" class="form-select" required>
+                                <option value="" selected disabled>Select a product</option>
+                                <option value="Fresh Catfish">Fresh Catfish</option>
+                                <option value="Smoked Catfish">Smoked Catfish</option>
+                                <option value="Catfish Fingerlings">Catfish Fingerlings</option>
+                                <option value="Other">Other</option>
+                            </select>
+                            <span asp-validation-for="ProductPurchased" class="text-danger"></span>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label asp-for="ReviewText" class="form-label">Your Review</label>
+                            <textarea asp-for="ReviewText" class="form-control" rows="5" required></textarea>
+                            <span asp-validation-for="ReviewText" class="text-danger"></span>
+                        </div>
+                        
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="consent" required>
+                            <label class="form-check-label" for="consent">I consent to having my review displayed on the Bloop Fish Farm website</label>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary-green">
+                            <i class="fas fa-paper-plane me-2"></i>Submit Review
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            // Star rating functionality
+            $('.rating-stars i').hover(function() {
+                var currentStar = parseInt($(this).data('rating'));
+                
+                // Highlight stars on hover
+                $('.rating-stars i').each(function() {
+                    if(parseInt($(this).data('rating')) <= currentStar) {
+                        $(this).removeClass('far').addClass('fas');
+                    } else {
+                        $(this).removeClass('fas').addClass('far');
+                    }
+                });
+            }, function() {
+                // Restore original state on mouse out
+                var selectedRating = parseInt($('#Rating').val());
+                
+                $('.rating-stars i').each(function() {
+                    if(parseInt($(this).data('rating')) <= selectedRating) {
+                        $(this).removeClass('far').addClass('fas');
+                    } else {
+                        $(this).removeClass('fas').addClass('far');
+                    }
+                });
+            });
+            
+            // Set rating on click
+            $('.rating-stars i').click(function() {
+                var selectedRating = parseInt($(this).data('rating'));
+                $('#Rating').val(selectedRating);
+                
+                // Update visual stars
+                $('.rating-stars i').each(function() {
+                    if(parseInt($(this).data('rating')) <= selectedRating) {
+                        $(this).removeClass('far').addClass('fas');
+                    } else {
+                        $(this).removeClass('fas').addClass('far');
+                    }
+                });
+            });
+            
+            // AJAX form submission
+            $('#reviewForm').submit(function(e) {
+                e.preventDefault();
+                
+                // Validate rating
+                if($('#Rating').val() == "0") {
+                    showNotification('Please select a rating before submitting.', 'warning');
+                    return;
+                }
+                
+                // Submit form via AJAX
+                $.ajax({
+                    type: "POST",
+                    url: $(this).attr('action'),
+                    data: $(this).serialize(),
+                    success: function(response) {
+                        if(response.success) {
+                            showNotification(response.message, 'success');
+                            // Reset the form
+                            $('#reviewForm')[0].reset();
+                            // Reset rating stars
+                            $('.rating-stars i').removeClass('fas').addClass('far');
+                            $('#Rating').val(0);
+                        } else {
+                            showNotification(response.message, 'danger');
+                        }
+                    },
+                    error: function() {
+                        showNotification('An error occurred. Please try again later.', 'danger');
+                    }
+                });
+            });
+            
+            function showNotification(message, type) {
+                var alertClass = 'alert-' + (type || 'info');
+                var notification = $('<div class="alert ' + alertClass + ' alert-dismissible fade show" role="alert">' +
+                    message +
+                    '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>' +
+                    '</div>');
+                
+                // Append notification to the notification area
+                $('#notification-area').html(notification);
+                
+                // Auto dismiss after 5 seconds
+                setTimeout(function() {
+                    notification.alert('close');
+                }, 5000);
+            }
+        });
+    </script>
+    
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,17 @@
+/Users/emmanuelbalogun/Public/BloopFishFarm/BloopFishFarm.Infrastructure/bin/Debug/net9.0/BloopFishFarm.Infrastructure.deps.json
+/Users/emmanuelbalogun/Public/BloopFishFarm/BloopFishFarm.Infrastructure/bin/Debug/net9.0/BloopFishFarm.Infrastructure.runtimeconfig.json
+/Users/emmanuelbalogun/Public/BloopFishFarm/BloopFishFarm.Infrastructure/bin/Debug/net9.0/BloopFishFarm.Infrastructure.dll
+/Users/emmanuelbalogun/Public/BloopFishFarm/BloopFishFarm.Infrastructure/bin/Debug/net9.0/BloopFishFarm.Infrastructure.pdb
+/Users/emmanuelbalogun/Public/BloopFishFarm/BloopFishFarm.Infrastructure/bin/Debug/net9.0/BloopFishFarm.Core.dll
+/Users/emmanuelbalogun/Public/BloopFishFarm/BloopFishFarm.Infrastructure/bin/Debug/net9.0/BloopFishFarm.Core.pdb
+/Users/emmanuelbalogun/Public/BloopFishFarm/BloopFishFarm.Infrastructure/obj/Debug/net9.0/BloopFishFarm.Infrastructure.csproj.AssemblyReference.cache
+/Users/emmanuelbalogun/Public/BloopFishFarm/BloopFishFarm.Infrastructure/obj/Debug/net9.0/BloopFishFarm.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+/Users/emmanuelbalogun/Public/BloopFishFarm/BloopFishFarm.Infrastructure/obj/Debug/net9.0/BloopFishFarm.Infrastructure.AssemblyInfoInputs.cache
+/Users/emmanuelbalogun/Public/BloopFishFarm/BloopFishFarm.Infrastructure/obj/Debug/net9.0/BloopFishFarm.Infrastructure.AssemblyInfo.cs
+/Users/emmanuelbalogun/Public/BloopFishFarm/BloopFishFarm.Infrastructure/obj/Debug/net9.0/BloopFishFarm.Infrastructure.csproj.CoreCompileInputs.cache
+/Users/emmanuelbalogun/Public/BloopFishFarm/BloopFishFarm.Infrastructure/obj/Debug/net9.0/BloopFis.F97190C6.Up2Date
+/Users/emmanuelbalogun/Public/BloopFishFarm/BloopFishFarm.Infrastructure/obj/Debug/net9.0/BloopFishFarm.Infrastructure.dll
+/Users/emmanuelbalogun/Public/BloopFishFarm/BloopFishFarm.Infrastructure/obj/Debug/net9.0/refint/BloopFishFarm.Infrastructure.dll
+/Users/emmanuelbalogun/Public/BloopFishFarm/BloopFishFarm.Infrastructure/obj/Debug/net9.0/BloopFishFarm.Infrastructure.pdb
+/Users/emmanuelbalogun/Public/BloopFishFarm/BloopFishFarm.Infrastructure/obj/Debug/net9.0/BloopFishFarm.Infrastructure.genruntimeconfig.cache
+/Users/emmanuelbalogun/Public/BloopFishFarm/BloopFishFarm.Infrastructure/obj/Debug/net9.0/ref/BloopFishFarm.Infrastructure.dll

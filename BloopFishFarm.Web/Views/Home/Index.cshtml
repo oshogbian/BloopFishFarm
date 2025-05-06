@@ -1,0 +1,1078 @@
+﻿@model IEnumerable<BloopFishFarm.Core.Models.Fish>
+@{
+    ViewData["Title"] = "Bloop Fish Farm - Fresh Catfish";
+}
+
+<div class="container my-5">
+    <!-- Hero Section -->
+    <div class="hero-container">
+        <div class="slideshow">
+            <div class="slide active" style="background-image: url('/images/slide1.png')"></div>
+            <div class="slide" style="background-image: url('/images/slide2.png')"></div>
+            <div class="slide" style="background-image: url('/images/slide3.png')"></div>
+            <div class="slide" style="background-image: url('/images/slide4.png')"></div>
+        </div>
+        
+        <div class="hero-content">
+            <div class="container">
+                <div class="row justify-content-start">
+                    <div class="col-lg-7 col-md-9">
+                        <h1 class="hero-title">Quality Catfish Farming with Sustainable Practices</h1>
+                        <p class="hero-description">Experience premium farm-to-table catfish raised with care. Fresh and smoked options available directly from our local ponds.</p>
+                        <div class="hero-actions">
+                            <a href="#featured-products" class="btn btn-primary-green btn-lg px-4 me-md-2 mb-2 mb-md-0" id="scroll-to-products">
+                                <i class="fas fa-fish me-2"></i>View Products
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Features -->
+    <div class="row mb-5 text-center">
+        <div class="col-md-4 mb-4">
+            <div class="p-4 bg-light rounded-3 h-100 shadow-sm">
+                <i class="fas fa-fish feature-icon"></i>
+                <h3 class="text-primary-green">Farm Fresh</h3>
+                <p class="text-muted">Harvested daily from our sustainable farm for maximum freshness and quality.</p>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="p-4 bg-light rounded-3 h-100 shadow-sm">
+                <i class="fas fa-truck feature-icon"></i>
+                <h3 class="text-primary-green">Fast Delivery</h3>
+                <p class="text-muted">Delivery available to ensure you receive the freshest fish possible.</p>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="p-4 bg-light rounded-3 h-100 shadow-sm">
+                <i class="fas fa-leaf feature-icon"></i>
+                <h3 class="text-primary-green">All Natural</h3>
+                <p class="text-muted">No hormones, antibiotics, or artificial feeds - just natural, healthy catfish.</p>
+            </div>
+        </div>
+    </div>
+    <!-- Featured Products -->
+    <div class="mb-5" id="featured-products">
+        <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap">
+            <h2 class="fw-bold section-heading mb-2 mb-sm-0">Our Products</h2>
+            <a href="@Url.Action("List", "Fish")" class="btn btn-outline-primary-green">View All Products</a>
+        </div>
+        
+        <div class="tab-content" id="fish-categoriesContent">
+            <!-- All Products Tab -->
+            <div class="tab-pane fade show active" id="all-products" role="tabpanel" aria-labelledby="all-tab">
+                <div class="row">
+                    <!-- Live Catfish - Small -->
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100 shadow-sm product-card">
+                            <div class="position-relative">
+                                <img src="/images/smalllive.png" class="card-img-top" alt="Small Live Catfish"     
+                                    onerror="this.src='/api/placeholder/400/300'; this.alt='Small Live Catfish placeholder'">
+                                <span class="badge bg-success-green position-absolute top-0 end-0 m-2">
+                                    Live
+                                </span>
+                                <span class="badge bg-info position-absolute top-0 start-0 m-2">
+                                    Small
+                                </span>
+                                <!-- Make sure this shows as available (true) -->
+                                <div class="availability-overlay" data-available="true">
+                                    <span class="not-available-text bg-danger px-3 py-2">Not Available</span>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title fw-bold">Small Live Catfish</h5>
+                                <p class="card-text text-muted">Smaller-sized catfish, perfect for individual servings. More fish per kg.</p>
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <span class="h5 fw-bold text-primary-green mb-0">₦2,800.00/kg</span>
+                                    <div class="rating">
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star-half-alt text-warning"></i>
+                                    </div>
+                                </div>
+                                
+                                <form id="addToCart-1" class="add-to-cart-form" data-fish-id="1" data-available="true">
+                                    <div class="mb-3">
+                                        <label for="weight-1" class="form-label">Weight:</label>
+                                        <div class="input-group">
+                                            <button class="btn btn-outline-primary-green decrease-weight" type="button" 
+                                                    data-fish-id="1" data-price="2800">
+                                                <i class="fas fa-minus"></i>
+                                            </button>
+                                            <input type="number" id="weight-1" name="weight" class="form-control text-center weight-input" 
+                                                   min="0.5" max="10" step="0.5" value="1" 
+                                                   data-fish-id="1" data-price="2800">
+                                            <span class="input-group-text weight-unit">kg</span>
+                                            <button class="btn btn-outline-primary-green increase-weight" type="button" 
+                                                    data-fish-id="1" data-price="2800">
+                                                <i class="fas fa-plus"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label>Total Price:</label>
+                                        <span id="total-price-1" class="total-price fw-bold">₦2,800.00</span>
+                                    </div>
+                                    
+                                    <button type="button" class="btn btn-primary-green w-100 add-to-cart-btn" data-fish-id="1">
+                                        <i class="fas fa-shopping-cart me-2"></i>Add to Cart
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Live Catfish - Medium -->
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100 shadow-sm product-card">
+                            <div class="position-relative">
+                                <img src="/images/mediumlive.png" class="card-img-top" alt="Medium Live Catfish"     
+                                    onerror="this.src='/api/placeholder/400/300'; this.alt='Medium Live Catfish placeholder'">
+                                <span class="badge bg-success-green position-absolute top-0 end-0 m-2">
+                                    Live
+                                </span>
+                                <span class="badge bg-info position-absolute top-0 start-0 m-2">
+                                    Medium
+                                </span>
+                                <!-- Make sure this shows as available (true) -->
+                                <div class="availability-overlay" data-available="true">
+                                    <span class="not-available-text bg-danger px-3 py-2">Not Available</span>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title fw-bold">Medium Live Catfish</h5>
+                                <p class="card-text text-muted">Mid-sized catfish with excellent meat-to-bone ratio. Standard choice for most meals.</p>
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <span class="h5 fw-bold text-primary-green mb-0">₦3,000.00/kg</span>
+                                    <div class="rating">
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                    </div>
+                                </div>
+                                
+                                <form id="addToCart-2" class="add-to-cart-form" data-fish-id="2" data-available="true">
+                                    <div class="mb-3">
+                                        <label for="weight-2" class="form-label">Weight:</label>
+                                        <div class="input-group">
+                                            <button class="btn btn-outline-primary-green decrease-weight" type="button" 
+                                                    data-fish-id="2" data-price="3000" >
+                                                <i class="fas fa-minus"></i>
+                                            </button>
+                                            <input type="number" id="weight-2" name="weight" class="form-control text-center weight-input" 
+                                                   min="0.5" max="10" step="0.5" value="1" 
+                                                   data-fish-id="2" data-price="3000" >
+                                            <span class="input-group-text weight-unit">kg</span>
+                                            <button class="btn btn-outline-primary-green increase-weight" type="button" 
+                                                    data-fish-id="2" data-price="3000" >
+                                                <i class="fas fa-plus"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label>Total Price:</label>
+                                        <span id="total-price-2" class="total-price fw-bold">₦3,000.00</span>
+                                    </div>
+                                    
+                                    <button type="button" class="btn btn-primary-green w-100 add-to-cart-btn" data-fish-id="2">
+                                        <i class="fas fa-shopping-cart me-2"></i>Add to Cart
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Live Catfish - Large -->
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100 shadow-sm product-card">
+                            <div class="position-relative">
+                                <img src="/images/largelive.png" class="card-img-top" alt="Large Live Catfish"     
+                                    onerror="this.src='/api/placeholder/400/300'; this.alt='Large Live Catfish placeholder'">
+                                <span class="badge bg-success-green position-absolute top-0 end-0 m-2">
+                                    Live
+                                </span>
+                                <span class="badge bg-info position-absolute top-0 start-0 m-2">
+                                    Large
+                                </span>
+                                <!-- Make sure this shows as available (true) -->
+                                <div class="availability-overlay" data-available="true">
+                                    <span class="not-available-text bg-danger px-3 py-2">Not Available</span>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title fw-bold">Large Live Catfish</h5>
+                                <p class="card-text text-muted">Premium large-sized catfish. Ideal for special occasions with more meat per fish.</p>
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <span class="h5 fw-bold text-primary-green mb-0">₦3,200.00/kg</span>
+                                    <div class="rating">
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                    </div>
+                                </div>
+                                
+                                <form id="addToCart-3" class="add-to-cart-form" data-fish-id="3" data-available="true">
+                                    <div class="mb-3">
+                                        <label for="weight-3" class="form-label">Weight:</label>
+                                        <div class="input-group">
+                                            <button class="btn btn-outline-primary-green decrease-weight" type="button" 
+                                                    data-fish-id="3" data-price="3200">
+                                                <i class="fas fa-minus"></i>
+                                            </button>
+                                            <input type="number" id="weight-3" name="weight" class="form-control text-center weight-input" 
+                                                   min="0.5" max="10" step="0.5" value="1" 
+                                                   data-fish-id="3" data-price="3200">
+                                            <span class="input-group-text weight-unit">kg</span>
+                                            <button class="btn btn-outline-primary-green increase-weight" type="button" 
+                                                    data-fish-id="3" data-price="3200">
+                                                <i class="fas fa-plus"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label>Total Price:</label>
+                                        <span id="total-price-3" class="total-price fw-bold">₦3,200.00</span>
+                                    </div>
+                                    
+                                    <button type="button" class="btn btn-primary-green w-100 add-to-cart-btn" data-fish-id="3">
+                                        <i class="fas fa-shopping-cart me-2"></i>Add to Cart
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                      
+                    <!-- Smoked Catfish - Small -->
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100 shadow-sm product-card">
+                            <div class="position-relative">
+                                <img src="/images/smokeds.png" class="card-img-top" alt="Small Smoked Catfish"     
+                                    onerror="this.src='/api/placeholder/400/300'; this.alt='Small Smoked Catfish placeholder'">
+                                <span class="badge bg-danger position-absolute top-0 end-0 m-2">
+                                    Smoked
+                                </span>
+                                <span class="badge bg-info position-absolute top-0 start-0 m-2">
+                                    Small
+                                </span>
+                                <div class="availability-overlay" data-available="false">
+                                    <span class="not-available-text bg-danger px-3 py-2">Not Available</span>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title fw-bold">Small Smoked Catfish</h5>
+                                <p class="card-text text-muted">Traditional smoked catfish with rich flavor. Perfect for soups and stews.</p>
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <span class="h5 fw-bold text-primary-green mb-0">₦20,000.00/kg</span>
+                                    <div class="rating">
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star-half-alt text-warning"></i>
+                                    </div>
+                                </div>
+                                
+                                <form id="addToCart-4" class="add-to-cart-form" data-fish-id="4" data-available="false">
+                                    <div class="mb-3">
+                                        <label for="weight-4" class="form-label">Weight:</label>
+                                        <div class="input-group">
+                                            <button class="btn btn-outline-primary-green decrease-weight" type="button" 
+                                                    data-fish-id="4" data-price="20000">
+                                                <i class="fas fa-minus"></i>
+                                            </button>
+                                            <input type="number" id="weight-4" name="weight" class="form-control text-center weight-input" 
+                                                   min="0.5" max="10" step="0.5" value="1" 
+                                                   data-fish-id="4" data-price="20000">
+                                            <span class="input-group-text weight-unit">kg</span>
+                                            <button class="btn btn-outline-primary-green increase-weight" type="button" 
+                                                    data-fish-id="4" data-price="20000">
+                                                <i class="fas fa-plus"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label>Total Price:</label>
+                                        <span id="total-price-4" class="total-price fw-bold">₦15,000.00</span>
+                                    </div>
+                                    
+                                    <button type="button" class="btn btn-primary-green w-100 add-to-cart-btn" data-fish-id="4">
+                                        <i class="fas fa-shopping-cart me-2"></i>Add to Cart
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Smoked Catfish - Large -->
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100 shadow-sm product-card">
+                            <div class="position-relative">
+                                <img src="/images/smokedl.png" class="card-img-top" alt="Large Smoked Catfish"     
+                                    onerror="this.src='/api/placeholder/400/300'; this.alt='Large Smoked Catfish placeholder'">
+                                <span class="badge bg-danger position-absolute top-0 end-0 m-2">
+                                    Smoked
+                                </span>
+                                <span class="badge bg-info position-absolute top-0 start-0 m-2">
+                                    Large
+                                </span>
+                                <div class="availability-overlay" data-available="false">
+                                    <span class="not-available-text bg-danger px-3 py-2">Not Available</span>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title fw-bold">Large Smoked Catfish</h5>
+                                <p class="card-text text-muted">Special preparation with longer smoking time and premium spices. Deep flavor profile.</p>
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <span class="h5 fw-bold text-primary-green mb-0">₦22,000.00/kg</span>
+                                    <div class="rating">
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                    </div>
+                                </div>
+                                
+                                <form id="addToCart-5" class="add-to-cart-form" data-fish-id="5" data-available="false">
+                                    <div class="mb-3">
+                                        <label for="weight-5" class="form-label">Weight:</label>
+                                        <div class="input-group">
+                                            <button class="btn btn-outline-primary-green decrease-weight" type="button" 
+                                                    data-fish-id="5" data-price="22000">
+                                                <i class="fas fa-minus"></i>
+                                            </button>
+                                            <input type="number" id="weight-5" name="weight" class="form-control text-center weight-input" 
+                                                   min="0.5" max="10" step="0.5" value="1" 
+                                                   data-fish-id="5" data-price="22000">
+                                            <span class="input-group-text weight-unit">kg</span>
+                                            <button class="btn btn-outline-primary-green increase-weight" type="button" 
+                                                    data-fish-id="5" data-price="22000">
+                                                <i class="fas fa-plus"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label>Total Price:</label>
+                                        <span id="total-price-5" class="total-price fw-bold">₦22,000.00</span>
+                                    </div>
+                                    
+                                    <button type="button" class="btn btn-primary-green w-100 add-to-cart-btn" data-fish-id="5">
+                                        <i class="fas fa-shopping-cart me-2"></i>Add to Cart
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <!-- Toast Notification Container -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 1050;">
+        <div id="cartToast" class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body">
+                    <i class="fas fa-check-circle me-2"></i><span id="toast-message"></span>
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Cart Button (Mobile) -->
+    <div class="d-md-none position-fixed" id="floating-cart-container" style="bottom: 20px; right: 20px; z-index: 1040;">
+        <button class="btn btn-primary-green btn-lg rounded-circle shadow" id="floating-cart-btn" data-bs-toggle="collapse" data-bs-target="#cart-collapse" aria-expanded="false" aria-controls="cart-collapse">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger cart-badge">0</span>
+        </button>
+    </div>
+
+    <!-- Collapsible Cart for Mobile -->
+    <div class="collapse d-md-none" id="cart-collapse">
+        <div class="card card-body position-fixed bottom-0 start-0 end-0 pb-5 mb-0" style="z-index: 1039; max-height: 60vh; overflow-y: auto;">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h5 class="mb-0"><i class="fas fa-shopping-cart me-2"></i>Your Cart</h5>
+                <button type="button" class="btn-close" data-bs-toggle="collapse" data-bs-target="#cart-collapse" aria-label="Close"></button>
+            </div>
+            <div id="mobile-cart-items">
+                <p class="text-muted text-center py-3">Your cart is empty.</p>
+            </div>
+            <div class="d-flex justify-content-between align-items-center mt-3">
+                <div>
+                    <span class="h5">Total: </span>
+                    <span id="mobile-cart-total" class="h5 fw-bold">₦0.00</span>
+                </div>
+                <button class="btn btn-success whatsapp-btn" id="mobile-checkout-whatsapp" disabled>
+                    <i class="fab fa-whatsapp me-2"></i>Order via WhatsApp
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Display (Desktop) -->
+    <div class="row mt-4 mb-5 d-none d-md-flex">
+        <div class="col-md-12">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary-green text-white">
+                    <h3 class="mb-0"><i class="fas fa-shopping-cart me-2"></i>Your Cart</h3>
+                </div>
+                <div class="card-body" id="cart-items">
+                    <p class="text-muted text-center py-3">Your cart is empty.</p>
+                </div>
+                <div class="card-footer">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <span class="h5">Total: </span>
+                            <span id="cart-total" class="h5 fw-bold">₦0.00</span>
+                        </div>
+                        <button class="btn btn-success whatsapp-btn" id="checkout-whatsapp" disabled>
+                            <i class="fab fa-whatsapp me-2"></i>Order via WhatsApp
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <script>
+       $(document).ready(function() {
+    // Product filtering functionality
+    $('.product-card').each(function() {
+        // Check if card has "Live" or "Smoked" badge
+        if($(this).find('.badge.bg-success-green').text().trim() === 'Live') {
+            $(this).attr('data-type', 'live');
+        } else if($(this).find('.badge.bg-danger').text().trim() === 'Smoked') {
+            $(this).attr('data-type', 'smoked');
+        }
+    });
+
+    $('.filter-btn').click(function() {
+        $('.filter-btn').removeClass('active');
+        $(this).addClass('active');
+        const filterValue = $(this).data('filter');
+        
+        if (filterValue === 'all') {
+            $('.product-card').parent().show();
+        } else {
+            $('.product-card').parent().hide();
+            $('.product-card[data-type="' + filterValue + '"]').parent().show();
+        }
+    });
+    
+    // Format numbers to Nigerian Naira format
+    function formatCurrency(amount) {
+        return '₦' + parseFloat(amount).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+    }
+    
+    // Format weight display (grams to kg after 900g)
+    function formatWeightDisplay(weightInGrams) {
+        if (weightInGrams >= 1000) {
+            return (weightInGrams / 1000).toFixed(1) + ' kg';
+        } else {
+            return weightInGrams + ' g';
+        }
+    }
+    
+    // Update weight unit display based on value
+    function updateWeightUnitDisplay(fishId, weightInGrams) {
+        const unitElement = $('#weight-' + fishId).siblings('.weight-unit');
+        if (weightInGrams >= 1000) {
+            unitElement.text('kg');
+        } else {
+            unitElement.text('g');
+        }
+    }
+    
+    // Initialize all weight inputs to use grams as base unit
+    $('.weight-input').each(function() {
+        const fishId = $(this).data('fish-id');
+        const pricePerKg = parseFloat($(this).data('price'));
+        
+        // Convert pricing to be per gram
+        const pricePerGram = pricePerKg / 1000;
+        $(this).data('price-per-gram', pricePerGram);
+        
+        // Set initial values in grams
+        const initialValue = 1000; // Start with 1kg (1000g)
+        $(this).val(initialValue);
+        $(this).attr('min', 100); // Minimum 100g
+        $(this).attr('max', 10000); // Maximum 10kg
+        $(this).attr('step', 100); // Steps of 100g
+        
+        // Update initial total price display
+        updateTotalPrice(fishId);
+        
+        // Set initial weight unit display
+        updateWeightUnitDisplay(fishId, initialValue);
+        
+        // Initialize weight display badges
+        updateWeightDisplay(fishId);
+    });
+    
+    // Initialize product availability
+    function initProductAvailability() {
+        // First, explicitly handle the availability overlays
+        $('.availability-overlay').each(function() {
+            const isAvailable = $(this).data('available') === true;
+            if (isAvailable) {
+                $(this).hide(); // Hide the "Not Available" overlay for available products
+            } else {
+                $(this).show(); // Show the overlay for unavailable products
+            }
+        });
+        
+        // Then handle the form inputs
+        $('.add-to-cart-form').each(function() {
+            const form = $(this);
+            const isAvailable = form.data('available') === true;
+            const fishId = form.data('fish-id');
+            
+            if (!isAvailable) {
+                // Disable form inputs
+                form.find('input, button').prop('disabled', true);
+                
+                // Replace add to cart button with not available button
+                const addToCartBtn = form.find('.add-to-cart-btn');
+                if (addToCartBtn.length) {
+                    addToCartBtn.removeClass('btn-primary-green add-to-cart-btn')
+                        .addClass('btn-secondary')
+                        .prop('disabled', true)
+                        .html('<i class="fas fa-times-circle me-2"></i>Not Available');
+                }
+            }
+        });
+        
+        // Force all live fish to be available (this is the key change)
+        $('.product-card').each(function() {
+            if ($(this).find('.badge.bg-success-green').text().trim() === 'Live') {
+                // Find the availability overlay in this card and hide it
+                $(this).find('.availability-overlay').hide();
+                
+                // Find the form and make sure it's enabled
+                const form = $(this).find('.add-to-cart-form');
+                form.data('available', true);
+                form.find('input, button').prop('disabled', false);
+                
+                // Make sure the add to cart button is properly styled and enabled
+                const addToCartBtn = form.find('button[data-fish-id]');
+                if (addToCartBtn.length && !addToCartBtn.hasClass('add-to-cart-btn')) {
+                    addToCartBtn.removeClass('btn-secondary')
+                        .addClass('btn-primary-green add-to-cart-btn')
+                        .prop('disabled', false)
+                        .html('<i class="fas fa-shopping-cart me-2"></i>Add to Cart');
+                }
+            }
+        });
+    }
+    
+    // Call initialization for product availability
+    initProductAvailability();
+    
+    // Add this CSS rule dynamically to ensure overlays are properly hidden
+    $('<style>')
+        .prop('type', 'text/css')
+        .html('.availability-overlay[data-available="true"] { display: none !important; }')
+        .appendTo('head');
+    
+    // Add weight display element after each weight input
+    $('.weight-input').each(function() {
+        const fishId = $(this).data('fish-id');
+        const weightDisplay = $('<span>', {
+            id: 'weight-display-' + fishId,
+            class: 'ms-2 weight-display badge bg-light text-dark'
+        });
+        
+        // Insert after the input group
+        $(this).closest('.input-group').after(weightDisplay);
+    });
+    
+    // Handle manual weight input changes
+    $('.weight-input').on('input', function() {
+        const fishId = $(this).data('fish-id');
+        const weightValue = parseInt($(this).val());
+        updateTotalPrice(fishId);
+        updateWeightDisplay(fishId);
+        updateWeightUnitDisplay(fishId, weightValue);
+    });
+    
+    // Handle decrease weight button
+    $('.decrease-weight').click(function() {
+        const fishId = $(this).data('fish-id');
+        const input = $('#weight-' + fishId);
+        const currentValue = parseInt(input.val());
+        const step = parseInt(input.attr('step') || 100);
+        const min = parseInt(input.attr('min') || 100);
+        
+        if (currentValue > min) {
+            const newValue = currentValue - step;
+            input.val(newValue);
+            updateTotalPrice(fishId);
+            updateWeightDisplay(fishId);
+            updateWeightUnitDisplay(fishId, newValue);
+        }
+    });
+    
+    // Handle increase weight button
+    $('.increase-weight').click(function() {
+        const fishId = $(this).data('fish-id');
+        const input = $('#weight-' + fishId);
+        const currentValue = parseInt(input.val());
+        const step = parseInt(input.attr('step') || 100);
+        const max = parseInt(input.attr('max') || 10000);
+        
+        if (currentValue < max) {
+            const newValue = currentValue + step;
+            input.val(newValue);
+            updateTotalPrice(fishId);
+            updateWeightDisplay(fishId);
+            updateWeightUnitDisplay(fishId, newValue);
+        }
+    });
+    
+    // Update weight display badge
+    function updateWeightDisplay(fishId) {
+        const input = $('#weight-' + fishId);
+        const weightInGrams = parseInt(input.val());
+        const weightDisplay = formatWeightDisplay(weightInGrams);
+        
+        // Update weight display badge
+        $('#weight-display-' + fishId).text(weightDisplay);
+    }
+    
+    // Update price display with formatted weight
+    function updateTotalPrice(fishId) {
+        const input = $('#weight-' + fishId);
+        const pricePerKg = parseFloat(input.data('price'));
+        const weightInGrams = parseInt(input.val());
+        const pricePerGram = pricePerKg / 1000;
+        
+        // Calculate total price
+        const totalPrice = pricePerGram * weightInGrams;
+        
+        // Update price display
+        $('#total-price-' + fishId).text(formatCurrency(totalPrice));
+    }
+    
+    // Shopping cart functionality
+    let cart = {
+        items: [],
+        
+        addItem: function(item) {
+            // Check if item already exists
+            const existingItemIndex = this.items.findIndex(i => i.fishId === item.fishId);
+            
+            if (existingItemIndex !== -1) {
+                // Update existing item weight
+                this.items[existingItemIndex].weightInGrams = parseInt(this.items[existingItemIndex].weightInGrams) + parseInt(item.weightInGrams);
+                this.items[existingItemIndex].total = this.items[existingItemIndex].weightInGrams * this.items[existingItemIndex].pricePerGram;
+            } else {
+                // Calculate item total
+                item.total = item.weightInGrams * item.pricePerGram;
+                // Add new item
+                this.items.push(item);
+            }
+            
+            this.saveCart();
+            this.updateCartDisplay();
+            this.updateCartCount();
+        },
+        
+        removeItem: function(fishId) {
+            this.items = this.items.filter(item => item.fishId !== fishId);
+            this.saveCart();
+            this.updateCartDisplay();
+            this.updateCartCount();
+        },
+        
+        getTotal: function() {
+            return this.items.reduce((total, item) => total + item.total, 0);
+        },
+        
+        saveCart: function() {
+            localStorage.setItem('bloopFishCartItems', JSON.stringify(this.items));
+        },
+        
+        loadCart: function() {
+            const savedCart = localStorage.getItem('bloopFishCartItems');
+            if (savedCart) {
+                try {
+                    this.items = JSON.parse(savedCart) || [];
+                    this.updateCartDisplay();
+                    this.updateCartCount();
+                } catch (e) {
+                    console.error('Error loading cart:', e);
+                    this.items = [];
+                    localStorage.removeItem('bloopFishCartItems');
+                }
+            }
+        },
+        
+        updateCartCount: function() {
+            const count = this.items.length;
+            $('.cart-badge').text(count);
+            
+            if (count > 0) {
+                $('.cart-badge').show();
+            } else {
+                $('.cart-badge').hide();
+            }
+        },
+        
+        updateCartDisplay: function() {
+            const cartItems = $('#cart-items');
+            const mobileCartItems = $('#mobile-cart-items');
+            
+            if (this.items.length === 0) {
+                const emptyMessage = '<p class="text-muted text-center py-3">Your cart is empty.</p>';
+                cartItems.html(emptyMessage);
+                mobileCartItems.html(emptyMessage);
+                $('#checkout-whatsapp, #mobile-checkout-whatsapp').prop('disabled', true);
+                $('#cart-total, #mobile-cart-total').text('₦0.00');
+                return;
+            }
+            
+            // Generate HTML for cart items
+            let cartHTML = '<div class="table-responsive"><table class="table table-hover">';
+            cartHTML += '<thead><tr><th>Item</th><th>Weight</th><th>Price</th><th>Actions</th></tr></thead><tbody>';
+            
+            let mobileCartHTML = '';
+            
+            this.items.forEach((item, index) => {
+                const weightDisplay = formatWeightDisplay(item.weightInGrams);
+                
+                // Desktop cart
+                cartHTML += `
+                    <tr>
+                        <td>${item.fishName}</td>
+                        <td>${weightDisplay}</td>
+                        <td>${formatCurrency(item.total)}</td>
+                        <td>
+                            <button class="btn btn-sm btn-outline-danger remove-item" data-fish-id="${item.fishId}">
+                                <i class="fas fa-trash-alt"></i>
+                            </button>
+                        </td>
+                    </tr>
+                `;
+                
+                // Mobile cart
+                mobileCartHTML += `
+                    <div class="card mb-2">
+                        <div class="card-body p-2">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h6 class="mb-0">${item.fishName}</h6>
+                                    <small>${weightDisplay} at ${formatCurrency(item.pricePerGram * 1000)}/kg</small>
+                                </div>
+                                <div class="text-end">
+                                    <p class="mb-0 fw-bold">${formatCurrency(item.total)}</p>
+                                    <button class="btn btn-sm btn-outline-danger remove-item" data-fish-id="${item.fishId}">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            cartHTML += '</tbody></table></div>';
+            
+            // Update both desktop and mobile cart
+            cartItems.html(cartHTML);
+            mobileCartItems.html(mobileCartHTML);
+            
+            // Enable checkout buttons and update totals
+            $('#checkout-whatsapp, #mobile-checkout-whatsapp').prop('disabled', false);
+            $('#cart-total, #mobile-cart-total').text(formatCurrency(this.getTotal()));
+            
+            // Add remove item handler
+            $('.remove-item').off('click').on('click', function() {
+                const fishId = $(this).data('fish-id');
+                cart.removeItem(fishId);
+                showToast('Item removed from cart', 'danger');
+            });
+        }
+    };
+    
+    // Load cart on page load
+    cart.loadCart();
+    
+    // Toast notification function
+    function showToast(message, type = 'success') {
+        const toastElement = $('#cartToast');
+        
+        // Set color based on type
+        toastElement.removeClass('bg-success bg-danger bg-warning');
+        toastElement.addClass('bg-' + type);
+        
+        // Set message
+        $('#toast-message').text(message);
+        
+        // Show toast
+        const toast = new bootstrap.Toast(toastElement);
+        toast.show();
+    }
+    
+    // Add to cart button handler for all products
+    $(document).on('click', '.add-to-cart-btn', function() {
+        const fishId = $(this).data('fish-id');
+        const card = $(this).closest('.card');
+        const form = $(this).closest('form');
+        const weightInput = form.find('.weight-input');
+        
+        // Get product details
+        const fishName = card.find('.card-title').text();
+        const fishSize = card.find('.badge.bg-info').text().trim();
+        const fishType = card.find('.badge.bg-success-green, .badge.bg-danger').text().trim();
+        const weightInGrams = parseInt(weightInput.val());
+        const pricePerKg = parseFloat(weightInput.data('price'));
+        const pricePerGram = pricePerKg / 1000;
+        
+        // Create cart item
+        const item = {
+            fishId: fishId,
+            fishName: fishName,
+            fishType: fishType,
+            fishSize: fishSize,
+            weightInGrams: weightInGrams,
+            pricePerGram: pricePerGram,
+            total: weightInGrams * pricePerGram
+        };
+        
+        // Add to cart
+        cart.addItem(item);
+        
+        // Show success toast
+        const weightDisplay = formatWeightDisplay(weightInGrams);
+        showToast(`${weightDisplay} of ${fishName} added to cart!`);
+    });
+    
+  // WhatsApp checkout functionality
+$('.whatsapp-btn').off('click').on('click', function() {
+    // WhatsApp numbers - add all the numbers you want to send messages to
+    const whatsappNumbers = [
+        "+2348069249998",
+        "+17045348737"  // Add your second number here
+        // Add more numbers as needed
+    ];
+    
+    // Get order details
+    const orderDetails = getOrderDetails(); // function to collect order details
+    
+    // Encode message for WhatsApp URL
+    const encodedMessage = encodeURIComponent(orderDetails);
+    
+    // Send message to first WhatsApp number - this will open in the current window
+    const firstWhatsAppURL = `https://wa.me/${whatsappNumbers[0]}?text=${encodedMessage}`;
+    window.open(firstWhatsAppURL, '_blank');
+    
+    // Send message to all additional WhatsApp numbers automatically
+    // Small delay to ensure they don't all try to open simultaneously
+    if (whatsappNumbers.length > 1) {
+        setTimeout(() => {
+            for (let i = 1; i < whatsappNumbers.length; i++) {
+                // Use a small increasing delay for each number to prevent browser blocking
+                setTimeout(() => {
+                    const whatsAppURL = `https://wa.me/${whatsappNumbers[i]}?text=${encodedMessage}`;
+                    window.open(whatsAppURL, '_blank');
+                }, i * 500); // 500ms staggered delay between each number
+            }
+        }, 1000); // 1 second delay after opening the first window
+    }
+});
+
+// Function to get order details (using the existing logic from your site)
+function getOrderDetails() {
+    // Create order message
+    let message = "Hello! I'd like to place an order:\n\n";
+    
+    cart.items.forEach(item => {
+        const weightDisplay = formatWeightDisplay(item.weightInGrams);
+        message += `• ${item.fishName} (${item.fishSize} ${item.fishType}): ${weightDisplay} at ${formatCurrency(item.pricePerGram * 1000)}/kg = ${formatCurrency(item.total)}\n`;
+    });
+    
+    message += `\nTotal: ${formatCurrency(cart.getTotal())}`;
+    message += "\n\nPlease confirm availability and delivery details. Thank you!";
+    
+    return message;
+}
+
+// Helper function to format weight (reusing your existing function)
+function formatWeightDisplay(weightInGrams) {
+    if (weightInGrams >= 1000) {
+        return (weightInGrams / 1000).toFixed(1) + ' kg';
+    } else {
+        return weightInGrams + ' g';
+    }
+}
+
+// Helper function to format currency (reusing your existing function)
+function formatCurrency(amount) {
+    return '₦' + parseFloat(amount).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+}
+    
+    // Slideshow functionality
+    let currentSlide = 0;
+    const slides = $('.slide');
+    const slideCount = slides.length;
+    
+    // Show a specific slide
+    function showSlide(index) {
+        slides.removeClass('active');
+        $(slides[index]).addClass('active');
+    }
+    
+    // Automatic slideshow
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % slideCount;
+        showSlide(currentSlide);
+    }
+    
+    // Start slideshow timer
+    setInterval(nextSlide, 5000);
+    
+    // Scroll to products functionality
+    $('#scroll-to-products').click(function(e) {
+        e.preventDefault();
+        $('html, body').animate({
+            scrollTop: $('#featured-products').offset().top - 70
+        }, 800);
+    });
+    
+    // ====== FIXED CART FUNCTIONALITY ======
+
+    // Properly initialize Bootstrap components
+    var cartCollapse = new bootstrap.Collapse(document.getElementById('cart-collapse'), {
+        toggle: false
+    });
+    
+    // Fixed positioning for the floating cart
+    $('#floating-cart-container').css({
+        'position': 'fixed',
+        'bottom': '20px',
+        'right': '20px',
+        'z-index': '1040',
+        'transition': 'none', // Remove any transitions for smoother dragging
+        'touch-action': 'none' // Prevent default touch actions
+    });
+    
+    // Variables for dragging
+    let isDragging = false;
+    let startX, startY, startLeft, startBottom;
+    const floatingCart = $('#floating-cart-container');
+    
+    // Keep track of movement to determine if it's a drag or click
+    let hasMoved = false;
+    
+    // Explicitly handle the floating cart button click
+    $('#floating-cart-btn').on('click', function(e) {
+        e.preventDefault();
+        if (!isDragging || !hasMoved) {
+            cartCollapse.toggle();
+        }
+    });
+    
+    // Add touch event listeners for dragging
+    floatingCart.on('touchstart', function(e) {
+        const touch = e.originalEvent.touches[0];
+        startX = touch.clientX;
+        startY = touch.clientY;
+        
+        // Get current position (in terms of left and bottom)
+        const rect = floatingCart[0].getBoundingClientRect();
+        startLeft = window.innerWidth - rect.right;
+        startBottom = window.innerHeight - rect.bottom;
+        
+        isDragging = true;
+        hasMoved = false; // Reset movement flag
+        
+        // Don't prevent default here to allow clicks
+    });
+    
+    $(document).on('touchmove', function(e) {
+        if (!isDragging) return;
+        
+        const touch = e.originalEvent.touches[0];
+        
+        // Check if moved more than a small threshold to distinguish from clicks
+        const deltaX = Math.abs(startX - touch.clientX);
+        const deltaY = Math.abs(startY - touch.clientY);
+        
+        if (deltaX > 5 || deltaY > 5) {
+            hasMoved = true;
+        }
+        
+        if (hasMoved) {
+            // Calculate new position
+            const moveX = startX - touch.clientX;
+            const moveY = startY - touch.clientY;
+            
+            const newRight = Math.max(10, startLeft + moveX);
+            const newBottom = Math.max(10, startBottom + moveY);
+            
+            // Update cart position
+            floatingCart.css({
+                'right': newRight + 'px',
+                'bottom': newBottom + 'px'
+            });
+            
+            // Prevent default scrolling during drag
+            e.preventDefault();
+        }
+    });
+    
+    $(document).on('touchend', function(e) {
+        if (!isDragging) return;
+        
+        isDragging = false;
+        
+        // Only adjust position if we actually moved
+        if (hasMoved) {
+            // Keep the cart within screen bounds
+            const windowWidth = $(window).width();
+            const windowHeight = $(window).height();
+            const cartWidth = floatingCart.outerWidth();
+            const cartHeight = floatingCart.outerHeight();
+            
+            const rect = floatingCart[0].getBoundingClientRect();
+            
+            // Adjust if out of bounds
+            if (rect.left < 10) {
+                floatingCart.css('right', (windowWidth - cartWidth - 10) + 'px');
+            }
+            if (rect.right > windowWidth - 10) {
+                floatingCart.css('right', '10px');
+            }
+            if (rect.top < 10) {
+                floatingCart.css('bottom', (windowHeight - cartHeight - 10) + 'px');
+            }
+            if (rect.bottom > windowHeight - 10) {
+                floatingCart.css('bottom', '10px');
+            }
+        }
+    });
+    
+    // Fix for desktop cart button (if present)
+    $('.cart-button').on('click', function(e) {
+        e.preventDefault();
+        // Show the cart directly
+        $('#cart-items').parent().show();
+    });
+});
+    </script>
+}
